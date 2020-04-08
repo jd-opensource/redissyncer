@@ -5,8 +5,9 @@ version: "2.4"
 services:
   redissyncer-server:
       image: jiashiwen/redissyncer:v2.0.8
-      ports:
-      - "8000:80"
+      #ports:
+      #- "8000:80"
+      network_mode: "host"
       mem_limit: 3g 
       environment:
         SPRING_ENV: "--server.port=80"
