@@ -3,7 +3,7 @@
 SHELL_FOLDER=$(dirname $(readlink -f "$0"))
 
 jarpath=${SHELL_FOLDER}
-jarname=syncer-webapp-2.0.8.jar
+jarname=syncer-webapp-2.0.9.jar
 
 jarproc=`jps | grep ${jarname} `
 
