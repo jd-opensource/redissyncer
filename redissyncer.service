@@ -1,5 +1,13 @@
+[Unit]
+Description = redissyncer service up
+After = docker.service
+
 [Service]
-ExecStart=/home/redissyncer/redissyncer/startcompose.sh
+Type = oneshot
+RemainAfterExit = yes
+ExecStart = /bin/bash /home/redissyncer/redissyncer/startcompose.sh
+ExecStop = /bin/bash /home/redissyncer/redissyncer/stopcompose.sh
+
 
 [Install]
-WantedBy=default.target
+WantedBy = default.target
