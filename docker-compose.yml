@@ -16,8 +16,9 @@ services:
       #ports:
       #- "8000:80"
       network_mode: "host"
-      mem_limit: 2g 
+      mem_limit: 4g 
       environment:
+        JAVA_TOOL_OPTIONS: " -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -Xms4000m"
         SPRING_ENV: "--server.port=8080 --syncer.config.path.logfile=/log --syncer.config.path.datafile=/data "
       volumes:
         - /etc/localtime:/etc/localtime:ro
