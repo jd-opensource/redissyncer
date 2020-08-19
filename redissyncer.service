@@ -1,0 +1,5 @@
+[Service]
+ExecStart=/home/redissyncer/redissyncer/startcompose.sh
+
+[Install]
+WantedBy=default.target
