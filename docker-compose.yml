@@ -3,14 +3,22 @@
 version: "2.4"
 
 services:
+  redissyncer-dashboard:
+     image: jiashiwen/redissyncer-dashboard:v1.0
+     network_mode: "host"
+     volumes:
+        - /etc/localtime:/etc/localtime:ro
+        - ./dashboard.conf:/etc/nginx/conf.d/dashboard.conf
+     container_name: redissyncer-dashboard
+ 
   redissyncer-server:
-      image: jiashiwen/redissyncer:v2.0.9
+      image: jiashiwen/redissyncer:3.0.1
       #ports:
       #- "8000:80"
       network_mode: "host"
       mem_limit: 2g 
       environment:
-        SPRING_ENV: "--server.port=8000 --syncer.config.path.logfile=/log --syncer.config.path.datafile=/data "
+        SPRING_ENV: "--server.port=8080 --syncer.config.path.logfile=/log --syncer.config.path.datafile=/data "
       volumes:
         - /etc/localtime:/etc/localtime:ro
         - ./log:/log
