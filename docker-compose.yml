@@ -12,14 +12,14 @@ services:
      container_name: redissyncer-dashboard
  
   redissyncer-server:
-      image: jiashiwen/redissyncer:3.0.1
+      image: jiashiwen/redissyncer:latest
       #ports:
       #- "8000:80"
       network_mode: "host"
       mem_limit: 4g 
       environment:
         JAVA_TOOL_OPTIONS: " -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -Xms4000m"
-        SPRING_ENV: "--server.port=8080 --syncer.config.path.logfile=/log --syncer.config.path.datafile=/data --syncer.config.auth=true "
+        SPRING_ENV: "--server.port=8080 --syncer.config.path.logfile=/log --syncer.config.path.datafile=/data --syncer.config.auth=false "
       volumes:
         - /etc/localtime:/etc/localtime:ro
         - ./log:/log
