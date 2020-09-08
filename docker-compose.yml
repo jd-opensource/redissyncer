@@ -31,7 +31,7 @@ services:
       mem_limit: 4g 
       environment:
         JAVA_TOOL_OPTIONS: " -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -Xms4000m"
-        SPRING_ENV: "--server.port=8080 --syncer.config.path.logfile=/log --syncer.config.path.datafile=/ --syncer.config.auth=false --spring.boot.admin.client.url=http://127.0.0.1:8088 --spring.boot.admin.client.instance.service-url=http://127.0.0.1:8080 "
+        SPRING_ENV: "--server.port=8080 --syncer.config.path.logfile=/log --syncer.config.path.datafile=/ --syncer.config.auth=true --spring.boot.admin.client.url=http://127.0.0.1:8088 --spring.boot.admin.client.instance.service-url=http://127.0.0.1:8080 "
       volumes:
         - /etc/localtime:/etc/localtime:ro
         - ./log:/log
