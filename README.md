@@ -3,11 +3,12 @@
 ## docker-compse部署
 
 * 启动服务
-···
-git clone https://github.com/TraceNature/redissyncer.git
-cd redissyncer
-docker-compose up -d
-···
+  
+  ```shell
+  git clone https://github.com/TraceNature/redissyncer.git
+  cd redissyncer
+  docker-compose up -d
+  ```
 
 * 登录控制台
   * 浏览器访问 http://yourip
