@@ -3,38 +3,55 @@
 version: "2.4"
 
 services:
-  redissyncer-dashboard:
-     image: jiashiwen/redissyncer-dashboard:v1.0
-     network_mode: "host"
-     volumes:
-        - /etc/localtime:/etc/localtime:ro
-        - ./dashboard.conf:/etc/nginx/conf.d/dashboard.conf
-     container_name: redissyncer-dashboard
+  # redissyncer-dashboard:
+  #    image: jiashiwen/redissyncer-dashboard:v1.0
+  #    network_mode: "host"
+  #    volumes:
+  #       - /etc/localtime:/etc/localtime:ro
+  #       - ./dashboard.conf:/etc/nginx/conf.d/dashboard.conf
+  #    container_name: redissyncer-dashboard
 
-  redissyncer-monitor:
-      image: jiashiwen/redissyncer-monitor:latest
-      #ports:
+  # redissyncer-monitor:
+  #     image: jiashiwen/redissyncer-monitor:latest
+  #     #ports:
+  #     network_mode: "host"
+  #     mem_limit: 2g
+  #     environment:
+  #       SPRING_ENV: "--server.port=8088 "
+  #     volumes:
+  #       - /etc/localtime:/etc/localtime:ro
+  #     container_name: redissyncer-monitor
+  singleinstance-etcd:
+      image: docker.io/bitnami/etcd:3
       network_mode: "host"
-      mem_limit: 2g
       environment:
-        SPRING_ENV: "--server.port=8088 "
+      - ALLOW_NONE_AUTHENTICATION=yes
       volumes:
-        - /etc/localtime:/etc/localtime:ro
-      container_name: redissyncer-monitor
- 
+      - etcd_data:/bitnami/etcd
+
 
   redissyncer-server:
-      image: jiashiwen/redissyncer:latest
+      image: jiashiwen/redissyncer:3.3.3
       #ports:
       #- "8000:80"
       network_mode: "host"
       mem_limit: 4g 
       environment:
         JAVA_TOOL_OPTIONS: " -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -Xms4000m"
-        SPRING_ENV: "--server.port=8080 --syncer.config.path.logfile=/log --syncer.config.path.datafile=/ --syncer.config.auth=true --spring.boot.admin.client.url=http://127.0.0.1:8088 --spring.boot.admin.client.instance.service-url=http://127.0.0.1:8080 "
+        # SPRING_ENV: "--server.port=8080 
+        # --syncer.config.path.logfile=/log 
+        # --syncer.config.path.datafile=/ 
+        # --syncer.config.auth=false
+        # --spring.boot.admin.client.url=http://127.0.0.1:8088 
+        # --spring.boot.admin.client.instance.service-url=http://127.0.0.1:8080 "
+        SPRING_ENV: "--server.port=8080 
+        --server.storageType=etcd 
+        --server.singleNode=true 
+        --syncer.config.path.logfile=/log 
+        --syncer.config.auth=false "
       volumes:
         - /etc/localtime:/etc/localtime:ro
         - ./log:/log
         - ./config:/config
-        - ./data:/data
+        # - ./data:/data
       container_name: redissyncer-server
