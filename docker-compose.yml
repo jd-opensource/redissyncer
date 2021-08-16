@@ -48,7 +48,7 @@ services:
         --server.singleNode=true 
         --syncer.config.path.logfile=/log 
         --syncer.config.auth=false 
-        --etcd.endpoints='http://127.0.0.1:2379 "
+        --etcd.endpoints=127.0.0.1:2379 "
       volumes:
         - /etc/localtime:/etc/localtime:ro
         - ./log:/log
