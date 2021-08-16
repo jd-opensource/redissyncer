@@ -27,8 +27,7 @@ services:
       environment:
       - ALLOW_NONE_AUTHENTICATION=yes
       volumes:
-      - etcd_data:/bitnami/etcd
-
+      - ./etcd_data:/bitnami/etcd
 
   redissyncer-server:
       image: jiashiwen/redissyncer:3.3.3
