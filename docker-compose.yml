@@ -25,10 +25,11 @@ services:
       image: docker.io/bitnami/etcd:3
       network_mode: "host"
       environment:
-      - ALLOW_NONE_AUTHENTICATION=yes
-      - ETCD_ADVERTISE_CLIENT_URLS=http://127.0.0.1:2379
+        - ALLOW_NONE_AUTHENTICATION=yes
+        - ETCD_ADVERTISE_CLIENT_URLS=http://127.0.0.1:2379
       volumes:
-      - ./etcd_data:/bitnami/etcd/data
+        - /etc/localtime:/etc/localtime:ro
+        - ./etcd_data:/bitnami/etcd/data
 
   redissyncer-server:
       image: jiashiwen/redissyncer:3.3.3

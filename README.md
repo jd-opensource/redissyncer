@@ -7,6 +7,9 @@
   ```shell
   git clone https://github.com/TraceNature/redissyncer.git
   cd redissyncer
+  # 由于 bitnami/etcd 镜像采用 non-root 方式启动，需要对映射卷赋权
+  mkdir etcd_data
+  chown -R 1001 etcd_data
   docker-compose up -d
   ```
 
