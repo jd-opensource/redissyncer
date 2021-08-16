@@ -32,7 +32,7 @@ services:
         - ./etcd_data:/bitnami/etcd/data
 
   redissyncer-server:
-      image: jiashiwen/redissyncer:3.3.3
+      image: jiashiwen/redissyncer:4.0.0
       #ports:
       #- "8000:80"
       network_mode: "host"
