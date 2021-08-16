@@ -26,6 +26,7 @@ services:
       network_mode: "host"
       environment:
       - ALLOW_NONE_AUTHENTICATION=yes
+      - ETCD_ADVERTISE_CLIENT_URLS=http://127.0.0.1:2379
       volumes:
       - ./etcd_data:/bitnami/etcd
 
@@ -43,7 +44,7 @@ services:
         # --syncer.config.auth=false
         # --spring.boot.admin.client.url=http://127.0.0.1:8088 
         # --spring.boot.admin.client.instance.service-url=http://127.0.0.1:8080 "
-        SPRING_ENV: "--server.port=8080 
+        SPRING_ENV: " --server.port=8080 
         --server.storageType=etcd 
         --server.singleNode=true 
         --syncer.config.path.logfile=/log 
