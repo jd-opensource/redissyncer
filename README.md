@@ -15,7 +15,7 @@
 ```
 tar zxvf redissyncer-cli-rs-v3.3.3.tar.gz
 cd redissyncer-cli-rs-v3.3.3
-redissyncer-cli-rs -i
+ ./redissyncer-cli-rs-x86_64-linux  -i
 ``` 
 
 目录仅包含 linux 平台和 windows 平台的可执行文件，其他平台请参考
