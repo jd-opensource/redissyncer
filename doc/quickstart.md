@@ -167,13 +167,14 @@ curl -X POST \
 
 删除任务状态能为"RUN"
 
-* API及详细参数请参阅[api](api.md)文档
+* API及详细参数请参阅[api](https://github.com/TraceNature/redissyncer-server/blob/main/docs/api.md)文档
 
-* 更多场景案例请参阅[scenecases](scenecases.md)
+
 
 ### 使用客户端
 
-[客户端使用手册](../goclient/README.md)
+* [客户端使用手册](https://github.com/TraceNature/redissyncer-cli/blob/v0.2.0/docs/quickstart.md)
+* 更多场景案例请参阅[scenecases](https://github.com/TraceNature/redissyncer-cli/tree/v0.2.0/examples)
 
 ###  注意事项
 
