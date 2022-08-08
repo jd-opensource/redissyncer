@@ -57,7 +57,6 @@ services:
 
 ```
 
-相关启动参数配置请参阅[配置详情](serverconfig.md)
 
 ## 如何使用
 
