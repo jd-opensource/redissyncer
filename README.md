@@ -7,6 +7,7 @@
   ```shell
   git clone https://github.com/TraceNature/redissyncer.git
   cd redissyncer
+  git checkout 3.3.3
   docker-compose up -d
   ```
 
